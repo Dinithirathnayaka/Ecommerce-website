@@ -43,7 +43,7 @@ function Navbar() {
               viewBox="0 0 24 24"
               strokeWidth="2"
               stroke="#000"
-              class="w-6 h-6"
+              className="w-6 h-6"
             >
               <path
                 strokeLinecap="round"
