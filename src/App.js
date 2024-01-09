@@ -1,9 +1,10 @@
 import React from "react";
+import Main from "./Components/Main/Main";
 
 function App() {
   return (
     <div className="App">
-      <h1 className="text-3xl font-bold underline font-inter">Hello world!</h1>
+      <Main />
     </div>
   );
 }
