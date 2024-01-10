@@ -6,11 +6,16 @@ import {
   CardFooter,
   Typography,
 } from "@material-tailwind/react";
+import { useDispatch } from "react-redux";
+import { singleProduct } from "../../features/slices/productsSlice";
+import { Link, useParams } from "react-router-dom";
 
 function ProductCard({ id, name, text, price, colors, img }) {
+  const dispatch = useDispatch();
+  const { type } = useParams();
   return (
-    <div>
-      <Card className=" w-96">
+    <Link to={`/filteredProducts/${type}/` + id}>
+      <Card className=" w-96" onClick={() => dispatch(singleProduct(id))}>
         <CardHeader color="blue" className="relative h-96">
           <img src={img} alt="img-blur-shadow" className="h-full w-full" />
         </CardHeader>
@@ -35,7 +40,7 @@ function ProductCard({ id, name, text, price, colors, img }) {
           </Typography>
         </CardFooter>
       </Card>
-    </div>
+    </Link>
   );
 }
 

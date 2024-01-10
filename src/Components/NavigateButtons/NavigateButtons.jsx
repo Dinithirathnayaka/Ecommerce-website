@@ -30,7 +30,7 @@ function NavigateButtons() {
                   size="lg"
                   variant="outlined"
                   ripple={true}
-                  className="hover:bg-green-300 duration-300 ease-in-out"
+                  className="hover:bg-gray-200 duration-300 ease-in-out"
                   onClick={() => dispatch(filterProducts(button))}
                 >
                   {button}
@@ -40,7 +40,7 @@ function NavigateButtons() {
           );
         })}
       </div>
-      <div className="bg-green-300 p-2 w-[55%] mx-auto rounded-md">
+      <div className="bg-black p-2 w-[55%] mx-auto rounded-md">
         <h3 className="text-orange-900 text-center textlg font-inter font-bold tracking-normal leading-none">
           SALES UP TO 50%
         </h3>
