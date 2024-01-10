@@ -27,7 +27,14 @@ function ProductSectionItem({
   return (
     <div>
       {" "}
-      <Card className="w-96">
+      <Card className="w-96 relative">
+        <Typography
+          variant="h4"
+          color="blue-gray"
+          className="mb-2 absolute rotate-45 top-12 right-8 z-10 text-red-700"
+        >
+          SALE%
+        </Typography>
         <CardHeader floated={false} className="h-96">
           <img src={img} alt={name} />
         </CardHeader>
@@ -39,8 +46,11 @@ function ProductSectionItem({
             {text}
           </Typography>
           <div className="flex justify-between items-center pt-4">
-            <Typography color="gray" className="font-medium" textGradient>
-              Size left :{defaultSize}
+            <Typography color="red" className="font-medium" textGradient>
+              Size left :
+              <span className="text-gray-400 text-base font-extralight">
+                {defaultSize}
+              </span>
             </Typography>
             <Typography color="gray" className="font-medium" textGradient>
               Color:{" "}
