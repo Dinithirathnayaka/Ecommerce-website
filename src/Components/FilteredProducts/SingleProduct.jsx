@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Tooltip, Button } from "@material-tailwind/react";
+import { addToCart } from "../../features/slices/cartSlice";
+import { useDispatch } from "react-redux";
 
 function SingleProduct() {
   const product = useSelector((state) => state.products.singleProduct);
@@ -9,10 +11,11 @@ function SingleProduct() {
 
   const productSize = product[0].size ? product[0].size[0] : "";
   const productColor = product[0].color[0];
-
-  const { id } = useParams();
   const [size, setSize] = useState(productSize);
   const [color, setColor] = useState(productColor);
+
+  const { id } = useParams();
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -120,6 +123,19 @@ function SingleProduct() {
                       size="lg"
                       variant="outlined"
                       ripple={true}
+                      onClick={() =>
+                        dispatch(
+                          addToCart({
+                            id: item.id,
+                            name: item.name,
+                            size: size,
+                            color: color,
+                            price: item.price,
+                            amount: 1,
+                            totalPrice: item.price,
+                          })
+                        )
+                      }
                     >
                       Add to Cart
                     </Button>
