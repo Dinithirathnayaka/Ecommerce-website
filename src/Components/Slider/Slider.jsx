@@ -51,8 +51,8 @@ function Slider() {
               <div
                 className={
                   index === slideIndex
-                    ? "bg-green-300 rounded-full p-4 cursor-pointer"
-                    : "bg-white rounded-full p-4 cursor-pointer"
+                    ? "bg-gray-200 rounded-full p-2 cursor-pointer"
+                    : "bg-white rounded-full p-2 cursor-pointer"
                 }
                 onClick={() => dispatch(dotSlide(index))}
               ></div>
@@ -63,7 +63,7 @@ function Slider() {
       <div>
         <button
           onClick={() => dispatch(nextSlide(slideIndex + 1))}
-          className="absolute top-[50%] right-4 bg-white rounded-full p-2 hover:bg-green-300"
+          className="absolute top-[50%] right-4 bg-white rounded-full p-2 hover:bg-gray-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +71,7 @@ function Slider() {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="w-6 h-6"
+            className="w-3 h-3"
           >
             <path
               strokeLinecap="round"
@@ -82,7 +82,7 @@ function Slider() {
         </button>
         <button
           onClick={() => dispatch(prevSlide(slideIndex - 1))}
-          className="absolute top-[50%] left-4 bg-white rounded-full p-2 hover:bg-green-300"
+          className="absolute top-[50%] left-4 bg-white rounded-full p-2 hover:bg-gray-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@ function Slider() {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="w-6 h-6"
+            className="w-3 h-3"
           >
             <path
               strokeLinecap="round"

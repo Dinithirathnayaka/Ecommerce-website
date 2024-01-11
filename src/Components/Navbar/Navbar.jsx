@@ -29,10 +29,10 @@ function Navbar() {
           <img src={logo} alt="store" className="h-28 w-full" />
         </div>
         <div className="flex flex-row items-center">
-          <button className=" font-inter text-base tracking-normal leading-none font-medium text-center mr-4">
+          {/* <button className=" font-inter text-base tracking-normal leading-none font-medium text-center mr-4">
             Logout
-          </button>
-          <div className="flex flex-row items-center">
+          </button> */}
+          {/* <div className="flex flex-row items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -50,7 +50,7 @@ function Navbar() {
             <p className="font-inter text-base tracking-normal leading-none font-medium text-center mr-2">
               Wish List
             </p>
-          </div>
+          </div> */}
           <div
             className="flex flex-row items-center cursor-pointer"
             onClick={handleOpen}

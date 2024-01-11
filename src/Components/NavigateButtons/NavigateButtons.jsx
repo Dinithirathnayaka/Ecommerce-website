@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@material-tailwind/react";
-import clothes from "../../assests/images/clothes.jpg";
+import clothes from "../../assests/images/clothes2.jpg";
 import { filterProducts } from "../../features/slices/productsSlice";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
