@@ -180,7 +180,7 @@ function FilteredProducts() {
         {error ? (
           <Error />
         ) : (
-          <div className="grid grid-cols-4 justify-items-center py-8 gap-12">
+          <div className="grid grid-cols-1 justify-items-center py-8 gap-4 mx-auto md:grid-cols-3  md:max-w-7xl">
             {products
               .filter((product) => product.type === type)
               .map((product, index) => {

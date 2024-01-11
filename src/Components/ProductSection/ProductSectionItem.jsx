@@ -27,7 +27,7 @@ function ProductSectionItem({
   return (
     <div>
       {" "}
-      <Card className="w-96 relative">
+      <Card className="w-80 md:w-96 relative">
         <Typography
           variant="h4"
           color="blue-gray"

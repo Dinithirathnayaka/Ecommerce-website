@@ -20,14 +20,14 @@ function NavigateButtons() {
   const dispatch = useDispatch();
   return (
     <div>
-      <div className="flex items-center justify-center py-8">
+      <div className="md:flex items-center justify-center md:py-8">
         {buttons.map((button, index) => {
           return (
-            <div key={index} className="mr-4">
+            <div key={index} className="md:mr-4">
               <Link to={"/filteredProducts/" + button}>
                 <Button
                   color="gray"
-                  size="lg"
+                  size=""
                   variant="outlined"
                   ripple={true}
                   className="hover:bg-gray-200 duration-300 ease-in-out"
