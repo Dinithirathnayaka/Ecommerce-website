@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../features/slices/authSlice";
 import { Avatar } from "@material-tailwind/react";
 import { Tooltip } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const totalAmount = useSelector((state) => state.cart.totalAmount);
@@ -51,6 +52,22 @@ function Navbar() {
               Wish List
             </p>
           </div> */}
+          <Link to="/">
+            <div className="flex flex-row items-center">
+              <p className="font-inter text-base tracking-normal leading-none font-medium text-center mr-2">
+                Home
+              </p>
+            </div>
+          </Link>
+
+          <Link to="/contact">
+            <div className="flex flex-row items-center">
+              <p className="font-inter text-base tracking-normal leading-none font-medium text-center mr-2">
+                Contact Us
+              </p>
+            </div>
+          </Link>
+
           <div
             className="flex flex-row items-center cursor-pointer"
             onClick={handleOpen}

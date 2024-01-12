@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SingleProduct from "./Components/FilteredProducts/SingleProduct";
 import Login from "./Components/Login/Login";
 import { useSelector } from "react-redux";
+import Contact from "./Components/Contact/Contact";
+import { NotificationsMenu } from "./Components/FilteredProducts/test";
 
 function App() {
   const user = useSelector((state) => state.user.user);
@@ -25,6 +27,7 @@ function App() {
             path="/filteredProducts/:type/:id"
             element={<SingleProduct />}
           />
+          <Route path="/contact" element={<NotificationsMenu />} />
         </Routes>
       </BrowserRouter>
     </div>
