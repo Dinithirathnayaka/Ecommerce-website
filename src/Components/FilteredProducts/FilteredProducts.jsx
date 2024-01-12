@@ -52,13 +52,13 @@ function FilteredProducts() {
       <Navbar />
       <div className="pt-16">
         <div className="pl-14">
-          <h1 className="text-4xl font-inter text-gray-600 font-bold tracking-normal leading-none">
+          <h1 className="md:text-3xl text-2xl font-inter text-gray-600 font-bold tracking-normal leading-none">
             {type}
           </h1>
 
-          <div className="flex items-center justify-between py-8">
-            <div className="flex items-center">
-              <Menu>
+          <div className="flex items-center justify-end py-8 mx-5">
+            <div className="flex">
+              <Menu className="right-0">
                 <MenuHandler>
                   <IconButton variant="text">
                     <svg
@@ -220,12 +220,20 @@ function FilteredProducts() {
                       })}
                     </MenuList>
                   </Menu>
-                  <Typography
-                    className="text-black hover:bg-gray-300 duration-300 ease-in-out mr-4"
+                  <MenuItem
+                    className="flex items-center gap-4 py-2 pl-2 pr-8 "
                     onClick={() => dispatch(filterProducts(type))}
                   >
-                    Clear Filter
-                  </Typography>
+                    <div className="flex flex-col gap-1">
+                      <Typography
+                        variant="small"
+                        color="red"
+                        className="font-semibold"
+                      >
+                        Clear Filter
+                      </Typography>
+                    </div>
+                  </MenuItem>
                 </MenuList>
               </Menu>
             </div>
@@ -234,7 +242,7 @@ function FilteredProducts() {
         {error ? (
           <Error />
         ) : (
-          <div className="grid grid-cols-1 justify-items-center py-8 gap-4 mx-auto md:grid-cols-3  md:max-w-7xl">
+          <div className="grid grid-cols-1 justify-items-center py-8 gap-4 mx-auto md:grid-cols-2 lg:grid-cols-3  md:max-w-7xl">
             {products
               .filter((product) => product.type === type)
               .map((product, index) => {

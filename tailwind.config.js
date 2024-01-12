@@ -7,6 +7,9 @@ module.exports = withMT({
       fontFamily: {
         inter: ["Inter", "sans-serif"],
       },
+      width: {
+        w1: "22rem",
+      },
     },
   },
   plugins: [],

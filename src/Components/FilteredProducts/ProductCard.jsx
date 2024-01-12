@@ -16,7 +16,7 @@ function ProductCard({ id, name, text, price, colors, img }) {
   return (
     <Link to={`/filteredProducts/${type}/` + id}>
       <Card
-        className="w-80 md:w-96 my-8"
+        className="w-80 md:w-w1 my-8"
         onClick={() => dispatch(singleProduct(id))}
       >
         <CardHeader color="blue" className="relative h-96">

@@ -6,7 +6,6 @@ import SingleProduct from "./Components/FilteredProducts/SingleProduct";
 import Login from "./Components/Login/Login";
 import { useSelector } from "react-redux";
 import Contact from "./Components/Contact/Contact";
-import { NotificationsMenu } from "./Components/FilteredProducts/test";
 
 function App() {
   const user = useSelector((state) => state.user.user);

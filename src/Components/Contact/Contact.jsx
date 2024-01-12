@@ -1,7 +1,13 @@
 import React, { useRef } from "react";
 import { IconContext } from "react-icons";
 import emailjs from "emailjs-com";
-import { Button, Input, Typography } from "@material-tailwind/react";
+import {
+  Button,
+  Input,
+  Typography,
+  Textarea,
+  Tooltip,
+} from "@material-tailwind/react";
 
 function Contact() {
   const form = useRef();
@@ -30,7 +36,7 @@ function Contact() {
   }
 
   return (
-    <div className="flex justify-around items-center px-5">
+    <div className="flex justify-around items-center px-5 my-20">
       <div className="rounded-lg ">
         <h1 className=" text-3xl font-inter text-gray-600 font-bold tracking-normal leading-non text-center my-6">
           Contact Us
@@ -38,53 +44,10 @@ function Contact() {
 
         <IconContext.Provider>
           <form ref={form} className="form" onSubmit={sendEmail}>
-            <div className="flex flex-wrap justify-between  gap-6">
-              <Typography
-                variant="p"
-                color="blue-gray"
-                className="-mb-3 uppercase text-sm"
-              >
-                Your Name
-              </Typography>
-              <Input
-                size="lg"
-                placeholder="name"
-                className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                labelProps={{
-                  className: "before:content-none after:content-none",
-                }}
-              />
-              <Typography
-                variant="p"
-                color="blue-gray"
-                className="-mb-3 uppercase text-sm"
-              >
-                Email
-              </Typography>
-              <Input
-                size="lg"
-                placeholder="name@mail.com"
-                className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                labelProps={{
-                  className: "before:content-none after:content-none",
-                }}
-              />
-              <Typography
-                variant="p"
-                color="blue-gray"
-                className="-mb-3 uppercase text-sm"
-              >
-                Message
-              </Typography>
-              <Input
-                size="lg"
-                rows={10}
-                placeholder="type message here..."
-                className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                labelProps={{
-                  className: "before:content-none after:content-none",
-                }}
-              />
+            <div className="flex flex-wrap justify-between gap-6 mx-5">
+              <Input variant="standard" label="NAME" name="name" />
+              <Input variant="standard" label="EMAIL" name="email" />
+              <Textarea variant="outlined" label="MESSAGE" name="message" />
             </div>
 
             <Typography
@@ -92,18 +55,19 @@ function Contact() {
               content="Sign Out"
               placement="bottom"
             >
-              <Button
-                color="gray"
-                size="lg"
-                variant="outlined"
-                ripple={true}
-                className="hover:bg-gray-200 duration-300 ease-in-out uppercase"
-                type="submit"
-                content="Sign Out"
-                placement="bottom"
-              >
-                Send
-              </Button>
+              <Tooltip content="Send Message" placement="bottom">
+                <Button
+                  size="lg"
+                  variant="outlined"
+                  ripple={true}
+                  className=" duration-300 ease-in-out uppercase bg-black text-white rounded-none font-semibold "
+                  type="submit"
+                  content="Sign Out"
+                  placement="bottom"
+                >
+                  Send
+                </Button>
+              </Tooltip>
             </Typography>
           </form>
         </IconContext.Provider>

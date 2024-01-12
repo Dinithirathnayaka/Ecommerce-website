@@ -30,11 +30,15 @@ function NavigateButtons() {
 
   return (
     <div>
-      <Marquee direction="right" speed={70} className="my-10 ">
+      {" "}
+      <h1 className=" text-3xl font-inter text-gray-600 font-bold tracking-normal leading-non text-center my-6">
+        Shop by
+      </h1>
+      <Marquee direction="right" speed={70} className="mb-10 mt-5 ">
         {buttons.map((button, index) => {
           return (
             <Card
-              className="w-80 md:w-96 my-8 mx-5 h-80 flex  justify-center items-center"
+              className="w-80 md:w-96 my-8 mx-5 h-80 flex  justify-center items-center transition-transform duration-300 hover:scale-105"
               key={index}
               style={{
                 backgroundImage: `url(${button.image})`,

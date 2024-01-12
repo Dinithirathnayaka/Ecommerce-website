@@ -7,7 +7,8 @@ import { Avatar } from "@material-tailwind/react";
 import { Tooltip } from "@material-tailwind/react";
 import { Typography, Button } from "@material-tailwind/react";
 import { filterProducts } from "../../features/slices/productsSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Marquee from "react-fast-marquee";
 
 function Navbar() {
   const totalAmount = useSelector((state) => state.cart.totalAmount);
@@ -15,6 +16,7 @@ function Navbar() {
   const { name, image } = user;
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleOpen = () => {
     setOpen(true);
@@ -33,7 +35,7 @@ function Navbar() {
   return (
     <>
       <div className="bg-black p-2 w-full">
-        <h3 className="text-white font-inter text-2xl tracking-normal leading-none font-bold text-center ">
+        <h3 className="text-white font-inter md:text-2xl text-xl tracking-normal leading-none font-bold text-center ">
           Welcome All
         </h3>
       </div>
@@ -90,7 +92,7 @@ function Navbar() {
               </svg>
             )}
 
-            <p className="font-inter text-base tracking-normal leading-none font-medium text-center">
+            <p className="font-inter md:text-base tracking-normal leading-none md:font-medium text-sm  text-center">
               Shopping bag
             </p>
             <div>{open && <Cart openModel={open} setOpen={setOpen} />}</div>
@@ -127,27 +129,31 @@ function Navbar() {
               </Link>
             );
           })}
-          <Typography
-            as="li"
-            variant="small"
-            color="red"
-            className="p-1 font-medium"
-          >
-            SALE
-          </Typography>
+          <Link to="/salesection">
+            <Typography
+              as="li"
+              variant="small"
+              color="red"
+              className="p-1 font-medium"
+            >
+              SALE
+            </Typography>
+          </Link>
         </ul>
       </div>
 
       <div className="bg-black p-4 w-full justify-around flex">
-        <div className="text-white font-inter text-base tracking-normal leading-none font-medium text-center">
-          50% OFF
-        </div>
-        <div className="text-white font-inter text-base tracking-normal leading-none font-medium text-center">
-          Free shipping & returns
-        </div>
-        <div className="text-white font-inter text-base tracking-normal leading-none font-medium text-center">
-          Different payment methods
-        </div>
+        <Marquee direction="left" speed={100}>
+          <div className="text-white font-inter md:text-base text-sm tracking-normal leading-none font-medium font-sm text-center mx-60">
+            50% OFF
+          </div>
+          <div className="text-white font-inter md:text-base text-sm tracking-normal leading-none font-medium font-sm text-center mx-60">
+            Free shipping & returns
+          </div>
+          <div className="text-white font-inter md:text-base text-sm tracking-normal leading-none font-medium font-sm text-center mx-60">
+            Different payment methods
+          </div>
+        </Marquee>
       </div>
     </>
   );
