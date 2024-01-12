@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../features/slices/authSlice";
 import { Avatar } from "@material-tailwind/react";
 import { Tooltip } from "@material-tailwind/react";
+import { Typography, Button } from "@material-tailwind/react";
+import { filterProducts } from "../../features/slices/productsSlice";
 import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -17,6 +19,16 @@ function Navbar() {
   const handleOpen = () => {
     setOpen(true);
   };
+
+  const buttons = [
+    "Hoodies",
+    "Dresses",
+    "Suits",
+    "Shoes",
+    "Jeans",
+    "Jackets",
+    "Bags",
+  ];
 
   return (
     <>
@@ -96,6 +108,34 @@ function Navbar() {
             </div>
           </div>
         </div>
+      </div>
+      <div className=" flex justify-around items-center">
+        <ul className="flex  gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 cursor-pointer">
+          {" "}
+          {buttons.map((button, index) => {
+            return (
+              <Link to={"/filteredProducts/" + button} key={index}>
+                <Typography
+                  as="li"
+                  variant="small"
+                  color="blue-gray"
+                  className="p-1 font-medium"
+                  onClick={() => dispatch(filterProducts(button))}
+                >
+                  {button}
+                </Typography>
+              </Link>
+            );
+          })}
+          <Typography
+            as="li"
+            variant="small"
+            color="red"
+            className="p-1 font-medium"
+          >
+            SALE
+          </Typography>
+        </ul>
       </div>
 
       <div className="bg-black p-4 w-full justify-around flex">

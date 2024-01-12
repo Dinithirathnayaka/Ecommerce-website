@@ -30,7 +30,7 @@ function Slider() {
                   <img
                     src={item.img}
                     alt="shoes"
-                    className="h-[850px] w-full"
+                    className="h-[530px] w-full"
                   />
                 )}
               </div>

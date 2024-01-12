@@ -144,6 +144,23 @@ export const productsSlice = createSlice({
         return err;
       }
     },
+    filterFirstImages(state) {
+      try {
+        const firstImages = storeData.reduce((result, product) => {
+          if (!result.some((item) => item.type === product.type)) {
+            result.push(product);
+          }
+          return result;
+        }, []);
+
+        state.filteredProducts = firstImages;
+        state.error = false;
+        const saveState = JSON.stringify(firstImages);
+        sessionStorage.setItem("filteredData", saveState);
+      } catch (err) {
+        return err;
+      }
+    },
   },
 });
 
@@ -155,5 +172,6 @@ export const {
   filterByColor,
   filterBySize,
   filterByShoeSize,
+  filterFirstImages,
 } = productsSlice.actions;
 export default productsSlice.reducer;
