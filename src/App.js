@@ -27,7 +27,7 @@ function App() {
             path="/filteredProducts/:type/:id"
             element={<SingleProduct />}
           />
-          <Route path="/contact" element={<NotificationsMenu />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </BrowserRouter>
     </div>

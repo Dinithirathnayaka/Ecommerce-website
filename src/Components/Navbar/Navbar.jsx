@@ -52,21 +52,6 @@ function Navbar() {
               Wish List
             </p>
           </div> */}
-          <Link to="/">
-            <div className="flex flex-row items-center">
-              <p className="font-inter text-base tracking-normal leading-none font-medium text-center mr-2">
-                Home
-              </p>
-            </div>
-          </Link>
-
-          <Link to="/contact">
-            <div className="flex flex-row items-center">
-              <p className="font-inter text-base tracking-normal leading-none font-medium text-center mr-2">
-                Contact Us
-              </p>
-            </div>
-          </Link>
 
           <div
             className="flex flex-row items-center cursor-pointer"
