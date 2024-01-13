@@ -56,7 +56,7 @@ function Slider() {
               <div
                 className={
                   index === slideIndex
-                    ? "bg-gray-200 rounded-full p-2 cursor-pointer"
+                    ? "bg-gray-500 rounded-full p-2 cursor-pointer"
                     : "bg-white rounded-full p-2 cursor-pointer"
                 }
                 onClick={() => dispatch(dotSlide(index))}
@@ -68,7 +68,7 @@ function Slider() {
       <div>
         <button
           onClick={() => dispatch(nextSlide(slideIndex + 1))}
-          className="absolute top-[50%] right-4 bg-white rounded-full p-2 hover:bg-gray-200"
+          className="absolute top-[50%] right-4 bg-white rounded-full p-2 hover:bg-gray-500"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +87,7 @@ function Slider() {
         </button>
         <button
           onClick={() => dispatch(prevSlide(slideIndex - 1))}
-          className="absolute top-[50%] left-4 bg-white rounded-full p-2 hover:bg-gray-200"
+          className="absolute top-[50%] left-4 bg-white rounded-full p-2 hover:bg-gray-500"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

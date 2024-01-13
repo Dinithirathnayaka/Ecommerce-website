@@ -32,7 +32,7 @@ function SingleProduct() {
             >
               <div className="md:pl-44 mx-5 mb-8 grow-[2]">
                 <img
-                  className="h-[850px] rounded-lg r"
+                  className="md:h-[850px] h-[500px] rounded-lg r"
                   src={item.img}
                   alt="item.name"
                 />
