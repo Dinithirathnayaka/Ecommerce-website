@@ -58,7 +58,7 @@ function FilteredProducts() {
 
           <div className="flex items-center justify-end py-8 mx-5">
             <div className="flex">
-              <Menu className="right-0">
+              <Menu className="right-0" placement="left-start">
                 <MenuHandler>
                   <IconButton variant="text">
                     <svg
