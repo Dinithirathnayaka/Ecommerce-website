@@ -26,23 +26,27 @@ function SingleProduct() {
         .filter((product) => product.id === id)
         .map((item, index) => {
           return (
-            <div key={index} className="flex justify-center items-center py-10">
-              <div className="pl-44 grow-[2]">
+            <div
+              key={index}
+              className="flex flex-wrap justify-center items-center py-10"
+            >
+              <div className="md:pl-44 mx-5 mb-8 grow-[2]">
                 <img
-                  className="h-[850px] rounded-lg"
+                  className="h-[850px] rounded-lg r"
                   src={item.img}
                   alt="item.name"
                 />
               </div>
-              <div className="grow-[3]">
+
+              <div className="grow-[3] mx-5">
                 <div className="max-w-lg">
-                  <h5 className="text-2xl font-inter font-bold leading-none tracking-normal pb-4">
+                  <h5 className="text-xl font-inter font-bold leading-none tracking-normal pb-4">
                     {item.name}
                   </h5>
-                  <p className="text-orange-700 text-xl font-inter font-bold tracking-normal leading-none pb-4">
+                  <p className="text-orange-700 text-lg font-inter font-bold tracking-normal leading-none pb-4">
                     15% OFF
                   </p>
-                  <p className="text-gray-600 text-xl font-inter font-bold tracking-normal leading-none pb-4">
+                  <p className="text-gray-600 text-lg font-inter font-semibold tracking-normal leading-none pb-4 mb-4">
                     {item.text}
                   </p>
                   <div className="pb-4">
@@ -120,36 +124,40 @@ function SingleProduct() {
                       })}
                     </select>
                   </div>
-                  <Tooltip content="Add to Cart" placement="bottom">
-                    <Button
-                      color="gray"
-                      size="lg"
-                      variant="outlined"
-                      ripple={true}
-                      onClick={() =>
-                        dispatch(
-                          addToCart({
-                            id: item.id,
-                            name: item.name,
-                            img: item.img,
-                            text: item.text,
-                            size: size,
-                            color: color,
-                            price: item.price,
-                            amount: 1,
-                            totalPrice: item.price,
-                          })
-                        )
-                      }
-                    >
-                      Add to Cart
-                    </Button>
-                  </Tooltip>
+                  <div className="flex justify-center items-center md:justify-start md:items-start">
+                    {" "}
+                    <Tooltip content="Add to Cart" placement="bottom">
+                      <Button
+                        color="gray"
+                        size="lg"
+                        variant="outlined"
+                        ripple={true}
+                        onClick={() =>
+                          dispatch(
+                            addToCart({
+                              id: item.id,
+                              name: item.name,
+                              img: item.img,
+                              text: item.text,
+                              size: size,
+                              color: color,
+                              price: item.price,
+                              amount: 1,
+                              totalPrice: item.price,
+                            })
+                          )
+                        }
+                      >
+                        Add to Cart
+                      </Button>
+                    </Tooltip>
+                  </div>
                 </div>
               </div>
             </div>
           );
         })}
+
       <Footer />
     </div>
   );

@@ -45,9 +45,24 @@ function Contact() {
         <IconContext.Provider>
           <form ref={form} className="form" onSubmit={sendEmail}>
             <div className="flex flex-wrap justify-between gap-6 mx-5">
-              <Input variant="standard" label="NAME" name="name" />
-              <Input variant="standard" label="EMAIL" name="email" />
-              <Textarea variant="outlined" label="MESSAGE" name="message" />
+              <Input
+                variant="standard"
+                label="NAME"
+                name="name"
+                className="font-inter"
+              />
+              <Input
+                variant="standard"
+                label="EMAIL"
+                name="email"
+                className="font-inter"
+              />
+              <Textarea
+                variant="outlined"
+                label="MESSAGE"
+                name="message"
+                className="font-inter"
+              />
             </div>
 
             <Typography
@@ -60,7 +75,7 @@ function Contact() {
                   size="lg"
                   variant="outlined"
                   ripple={true}
-                  className=" duration-300 ease-in-out uppercase bg-black text-white rounded-none font-semibold "
+                  className=" duration-300 ease-in-out uppercase bg-black text-white rounded-none font-semibold w-40 font-inter"
                   type="submit"
                   content="Sign Out"
                   placement="bottom"

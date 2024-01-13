@@ -1,22 +1,26 @@
 import React, { useState } from "react";
+import {
+  MobileNav,
+  Typography,
+  IconButton,
+  Tooltip,
+  Avatar,
+} from "@material-tailwind/react";
+import { Link } from "react-router-dom";
+import { filterProducts } from "../../features/slices/productsSlice";
+import { useSelector, useDispatch } from "react-redux";
 import logo from "../../assests/images/logo.png";
 import Cart from "../Cart/Cart";
-import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../features/slices/authSlice";
-import { Avatar } from "@material-tailwind/react";
-import { Tooltip } from "@material-tailwind/react";
-import { Typography, Button } from "@material-tailwind/react";
-import { filterProducts } from "../../features/slices/productsSlice";
-import { Link, useNavigate } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 
 function Navbar() {
+  const [openNav, setOpenNav] = React.useState(false);
+  const dispatch = useDispatch();
   const totalAmount = useSelector((state) => state.cart.totalAmount);
   const user = useSelector((state) => state.user.user);
   const { name, image } = user;
   const [open, setOpen] = useState(false);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleOpen = () => {
     setOpen(true);
@@ -32,41 +36,57 @@ function Navbar() {
     "Bags",
   ];
 
+  React.useEffect(() => {
+    window.addEventListener(
+      "resize",
+      () => window.innerWidth >= 960 && setOpenNav(false)
+    );
+  }, []);
+
+  const navList = (
+    <div>
+      <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+        {buttons.map((button, index) => {
+          return (
+            <Link to={"/filteredProducts/" + button} key={index}>
+              <Typography
+                as="li"
+                variant="small"
+                color="blue-gray"
+                className="p-1 font-medium"
+                onClick={() => dispatch(filterProducts(button))}
+              >
+                {button}
+              </Typography>
+            </Link>
+          );
+        })}
+        <Link to="/salesection">
+          <Typography
+            as="li"
+            variant="small"
+            color="red"
+            className="p-1 font-medium"
+          >
+            SALE
+          </Typography>
+        </Link>
+      </ul>
+    </div>
+  );
+
   return (
-    <>
+    <div>
       <div className="bg-black p-2 w-full">
         <h3 className="text-white font-inter md:text-2xl text-xl tracking-normal leading-none font-bold text-center ">
           Welcome All
         </h3>
       </div>
-      <div className="flex justify-around items-center">
+      <div className="flex justify-around items-center w-full">
         <div>
           <img src={logo} alt="store" className="h-28 w-full" />
         </div>
         <div className="flex flex-row items-center">
-          {/* <button className=" font-inter text-base tracking-normal leading-none font-medium text-center mr-4">
-            Logout
-          </button> */}
-          {/* <div className="flex flex-row items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="#000"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-              />
-            </svg>
-            <p className="font-inter text-base tracking-normal leading-none font-medium text-center mr-2">
-              Wish List
-            </p>
-          </div> */}
-
           <div
             className="flex flex-row items-center cursor-pointer"
             onClick={handleOpen}
@@ -104,45 +124,59 @@ function Navbar() {
             <div onClick={() => dispatch(logout())}>
               <Tooltip content="Sign Out" placement="bottom">
                 <p className="font-inter text-sm font-medium tracking-normal leading-none">
-                  Hi {name.charAt("0").toUpperCase() + name.slice(1)}
+                  Hi {name.charAt(0).toUpperCase() + name.slice(1)}
                 </p>
               </Tooltip>
             </div>
           </div>
         </div>
       </div>
-      <div className=" flex justify-around items-center">
-        <ul className="flex  gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 cursor-pointer">
-          {" "}
-          {buttons.map((button, index) => {
-            return (
-              <Link to={"/filteredProducts/" + button} key={index}>
-                <Typography
-                  as="li"
-                  variant="small"
-                  color="blue-gray"
-                  className="p-1 font-medium"
-                  onClick={() => dispatch(filterProducts(button))}
-                >
-                  {button}
-                </Typography>
-              </Link>
-            );
-          })}
-          <Link to="/salesection">
-            <Typography
-              as="li"
-              variant="small"
-              color="red"
-              className="p-1 font-medium"
-            >
-              SALE
-            </Typography>
-          </Link>
-        </ul>
+
+      <IconButton
+        variant="text"
+        className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+        ripple={false}
+        onClick={() => setOpenNav(!openNav)}
+      >
+        {openNav ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            className="h-6 w-6"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        )}
+      </IconButton>
+      <div className="hidden lg:flex  justify-around items-center w-full">
+        {navList}
       </div>
 
-      <div className="bg-black p-4 w-full justify-around flex">
+      <MobileNav open={openNav}>
+        <div className="container mx-auto">{navList}</div>
+      </MobileNav>
+      <div className="bg-black p-4 w-full ">
         <Marquee direction="left" speed={100}>
           <div className="text-white font-inter md:text-base text-sm tracking-normal leading-none font-medium font-sm text-center mx-60">
             50% OFF
@@ -155,7 +189,7 @@ function Navbar() {
           </div>
         </Marquee>
       </div>
-    </>
+    </div>
   );
 }
 
