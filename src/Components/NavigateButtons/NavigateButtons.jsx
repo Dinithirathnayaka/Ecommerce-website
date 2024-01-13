@@ -67,14 +67,14 @@ function NavigateButtons() {
           );
         })}
       </Marquee>
-      <div className="bg-black p-2 w-[55%] mx-auto rounded-md">
-        <h3 className="text-orange-900 text-center textlg font-inter font-bold tracking-normal leading-none">
+      <div className="bg-black p-2 md:w-[55%] w-[70%] mx-auto rounded-md">
+        <h3 className="text-orange-900 text-center md:text-lg text-md font-inter font-bold tracking-normal leading-none">
           SALES UP TO 50%
         </h3>
       </div>
-      <div className="flex justify-center items-center py-4">
+      <div className="flex justify-center items-center py-4 my-5">
         <img
-          className="h-[600px] w-[70%] rounded-md shadow-lg shadow-gray-600"
+          className="md:h-[600px] h-[400px] md:w-[80%] w-[90%] rounded-md shadow-lg shadow-gray-600"
           src={clothes}
           alt="clothes"
         />

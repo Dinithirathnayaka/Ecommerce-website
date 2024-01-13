@@ -134,7 +134,7 @@ function Navbar() {
 
       <IconButton
         variant="text"
-        className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+        className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden mb-4"
         ripple={false}
         onClick={() => setOpenNav(!openNav)}
       >
@@ -156,20 +156,21 @@ function Navbar() {
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
             fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
             stroke="currentColor"
-            strokeWidth={2}
+            className="w-6 h-6"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
             />
           </svg>
         )}
       </IconButton>
-      <div className="hidden lg:flex  justify-around items-center w-full">
+      <div className="hidden lg:flex mx-auto justify-around items-center w-full">
         {navList}
       </div>
 

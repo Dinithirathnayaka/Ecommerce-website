@@ -27,15 +27,20 @@ function Slider() {
             >
               <div>
                 {parseInt(item.id) === slideIndex && (
-                  <img
-                    src={item.img}
-                    alt="shoes"
-                    className="h-[530px] w-full"
-                  />
+                  <div className="relative h-[350px] md:h-[700px] ">
+                    <div className="absolute inset-0 ">
+                      <img
+                        src={item.img}
+                        alt="shoes"
+                        className="h-full w-full object-cover "
+                      />
+                    </div>
+                    <div className="absolute inset-0 bg-black opacity-50"></div>
+                  </div>
                 )}
               </div>
-              <div className="absolute top-44 mx-auto inset-x-1/4">
-                <p className="text-white text-4xl font-bold font-inter">
+              <div className="absolute md:top-60 top-32 mx-auto inset-x-1/4 ">
+                <p className="text-white md:text-4xl text-xl font-bold font-inter text-center">
                   {" "}
                   {parseInt(item.id) === slideIndex && item.text}
                 </p>
