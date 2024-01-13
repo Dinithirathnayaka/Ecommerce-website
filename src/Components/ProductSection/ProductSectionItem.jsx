@@ -27,7 +27,7 @@ function ProductSectionItem({
   return (
     <div>
       {" "}
-      <Card className="w-80 md:w-w1 relative">
+      <Card className="w-80 md:w1 relative">
         <Typography
           variant="h5"
           color="blue-gray"
@@ -35,7 +35,10 @@ function ProductSectionItem({
         >
           SALE%
         </Typography>
-        <CardHeader floated={false} className="h-96">
+        <CardHeader
+          floated={false}
+          className="h-96 transition-transform duration-300 hover:scale-105"
+        >
           <img src={img} alt={name} />
         </CardHeader>
         <CardBody className="text-center">
