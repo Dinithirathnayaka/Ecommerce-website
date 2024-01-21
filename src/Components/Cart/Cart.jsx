@@ -17,7 +17,7 @@ function Cart({ openModel, setOpen }) {
   return (
     <div>
       {cart.length > 0 ? (
-        <Fragment>
+        <Fragment className="pt-20">
           <Dialog
             className="border-0 outline-0"
             open={openModel}
@@ -30,7 +30,7 @@ function Cart({ openModel, setOpen }) {
             <DialogHeader>Shopping Bag</DialogHeader>
             <DialogBody
               divider
-              className="flex flex-col justify-center items-start overflow-y-auto max-h-[550px]"
+              className="flex flex-col justify-center items-start overflow-y-auto max-h-[550px] pt-96 "
               style={{ scrollbarWidth: "hidden" }}
             >
               {cart.map((item, index) => {
