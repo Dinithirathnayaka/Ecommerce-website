@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { IconContext } from "react-icons";
 import emailjs from "emailjs-com";
+import bgImg from "../../assests/images/bg1.jpg";
 import {
   Button,
   Input,
@@ -36,14 +37,14 @@ function Contact() {
   }
 
   return (
-    <div className="flex justify-around items-center px-5 my-20">
-      <div className="rounded-lg ">
-        <h1 className=" text-3xl font-inter text-gray-600 font-bold tracking-normal leading-non text-center my-6">
+    <div className="flex items-center justify-around p-5 py-20 my-5 ">
+      <div className="p-5 px-10 border-2 border-black rounded-lg">
+        <h1 className="my-6 text-3xl font-bold tracking-normal text-center text-black font-inter leading-non">
           Contact Us
         </h1>
 
         <IconContext.Provider>
-          <form ref={form} className="form" onSubmit={sendEmail}>
+          <form ref={form} className=" form" onSubmit={sendEmail}>
             <div className="flex flex-wrap justify-between gap-6 mx-5">
               <Input
                 variant="standard"
@@ -61,12 +62,13 @@ function Contact() {
                 variant="outlined"
                 label="MESSAGE"
                 name="message"
-                className="font-inter"
+                className=" font-inter"
+                style={{ color: "black" }}
               />
             </div>
 
             <Typography
-              className="flex justify-center items-center my-6"
+              className="flex items-center justify-center my-6"
               content="Sign Out"
               placement="bottom"
             >
@@ -75,7 +77,7 @@ function Contact() {
                   size="lg"
                   variant="outlined"
                   ripple={true}
-                  className=" duration-300 ease-in-out uppercase bg-black text-white rounded-none font-semibold w-40 font-inter"
+                  className="w-40 font-semibold text-white uppercase duration-300 ease-in-out bg-black rounded-none font-inter"
                   type="submit"
                   content="Sign Out"
                   placement="bottom"
