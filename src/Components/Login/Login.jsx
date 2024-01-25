@@ -20,19 +20,35 @@ function Login() {
   };
 
   const [values, setValues] = useState(initialState);
+  const [showAlert, setShowAlert] = useState(false);
   const onChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   };
 
   const dispatch = useDispatch();
+
+  const handleLogin = () => {
+    dispatch(login(values));
+
+    const passwordValidation =
+      /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{4,10}$/i.test(
+        values.password
+      );
+
+    if (!passwordValidation) {
+      setShowAlert(true);
+    } else {
+      setShowAlert(false);
+    }
+  };
   return (
-    <div className="grid grid-cols-1 items-center justify-items-center h-screen">
+    <div className="grid items-center h-screen grid-cols-1 justify-items-center">
       <Card className="w-96">
         <CardHeader
           variant="gradient"
           color="gray"
-          className="mb-4 grid h-28 place-items-center"
+          className="grid mb-4 h-28 place-items-center"
         >
           <Typography variant="h3" color="white">
             Sign In
@@ -52,7 +68,7 @@ function Login() {
             size="lg"
             type="password"
             name="password"
-            value={values.email}
+            value={values.password}
             onChange={onChange}
           />
           <Input
@@ -65,14 +81,18 @@ function Login() {
           />
         </CardBody>
         <CardFooter className="pt-0">
-          <Button
-            variant="gradient"
-            fullWidth
-            onClick={() => dispatch(login(values))}
-          >
+          <Button variant="gradient" fullWidth onClick={handleLogin}>
             Sign In
           </Button>
-          <Typography variant="small" className="mt-6 flex justify-center">
+          {showAlert && (
+            <div className="px-4 py-3 mb-4 text-red-700 bg-red-200">
+              <Typography variant="small">
+                Please enter a valid password.
+              </Typography>
+            </div>
+          )}
+
+          <Typography variant="small" className="flex justify-center mt-6">
             Image is Optional
           </Typography>
         </CardFooter>
