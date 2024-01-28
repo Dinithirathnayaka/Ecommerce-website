@@ -24,7 +24,7 @@ export const productsSlice = createSlice({
         return err;
       }
     },
-    setSingleProduct(state, action) {
+    singleProduct(state, action) {
       try {
         const oneProduct = storeData.filter(
           (product) => product.id === action.payload
@@ -166,7 +166,7 @@ export const productsSlice = createSlice({
 
 export const {
   filterProducts,
-  setSingleProduct,
+  singleProduct,
   filterGender,
   sortByPrice,
   filterByColor,

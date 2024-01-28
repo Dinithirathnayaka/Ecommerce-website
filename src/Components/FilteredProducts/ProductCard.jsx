@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useDispatch } from "react-redux";
-import { setSingleProduct } from "../../features/slices/productsSlice";
+import { singleProduct } from "../../features/slices/productsSlice";
 import { Link, useParams } from "react-router-dom";
 
 function ProductCard({ id, name, text, price, colors, img }) {
@@ -17,7 +17,7 @@ function ProductCard({ id, name, text, price, colors, img }) {
     <Link to={`/filteredProducts/${type}/` + id}>
       <Card
         className="my-8 w-80 md:w-w1"
-        onClick={() => dispatch(setSingleProduct(id))}
+        onClick={() => dispatch(singleProduct(id))}
       >
         <CardHeader
           color="blue"

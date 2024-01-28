@@ -17,7 +17,7 @@ function Cart({ openModel, setOpen }) {
   return (
     <div>
       {cart.length > 0 ? (
-        <Fragment className="pt-20">
+        <Fragment className="">
           <Dialog
             className="border-0 outline-0"
             open={openModel}
@@ -30,13 +30,13 @@ function Cart({ openModel, setOpen }) {
             <DialogHeader>Shopping Bag</DialogHeader>
             <DialogBody
               divider
-              className="flex flex-col justify-center items-start overflow-y-auto max-h-[550px] pt-96 "
+              className="flex flex-col justify-center items-start overflow-y-auto max-h-[300px] pt-28 "
               style={{ scrollbarWidth: "hidden" }}
             >
               {cart.map((item, index) => {
                 return (
                   <div key={index}>
-                    <div className="grid grid-cols-2 py-4 ">
+                    <div className="grid grid-cols-2 mt-8">
                       <div>
                         <img
                           className="h-[125px] rounded-md"

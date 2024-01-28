@@ -8,8 +8,8 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 
 function SingleProduct() {
-  const product = useSelector((state) => state.products.setSingleProduct);
-  console.log("setSingleProduct", product);
+  const product = useSelector((state) => state.products.singleProduct);
+  console.log("singleProduct", product);
 
   const productSize = product[0].size ? product[0].size[0] : "";
   const productColor = product[0].color[0];
