@@ -87,7 +87,8 @@ function Login() {
           {showAlert && (
             <div className="px-4 py-3 mb-4 text-red-700 bg-red-200">
               <Typography variant="small">
-                Please enter a valid password.
+                Password must contain at least one digit, one letter, one
+                special character (!@#$%^&*), and be 4 to 10 characters long.
               </Typography>
             </div>
           )}
