@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useDispatch } from "react-redux";
-import { singleProduct } from "../../features/slices/productsSlice";
+import { setSingleProduct } from "../../features/slices/productsSlice";
 import { Link, useParams } from "react-router-dom";
 
 function ProductCard({ id, name, text, price, colors, img }) {
@@ -16,14 +16,14 @@ function ProductCard({ id, name, text, price, colors, img }) {
   return (
     <Link to={`/filteredProducts/${type}/` + id}>
       <Card
-        className="w-80 md:w-w1 my-8"
-        onClick={() => dispatch(singleProduct(id))}
+        className="my-8 w-80 md:w-w1"
+        onClick={() => dispatch(setSingleProduct(id))}
       >
         <CardHeader
           color="blue"
-          className="relative h-96 transition-transform duration-300 hover:scale-105"
+          className="relative transition-transform duration-300 h-96 hover:scale-105"
         >
-          <img src={img} alt="img-blur-shadow" className="h-full w-full " />
+          <img src={img} alt="img-blur-shadow" className="w-full h-full " />
         </CardHeader>
         <CardBody className="text-center">
           <Typography variant="h5" className="mb-2">

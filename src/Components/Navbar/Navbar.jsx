@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import {
-  MobileNav,
+  Collapse,
   Typography,
   IconButton,
   Tooltip,
   Avatar,
 } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { filterProducts } from "../../features/slices/productsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import logo from "../../assests/images/logo.png";
@@ -21,6 +21,7 @@ function Navbar() {
   const user = useSelector((state) => state.user.user);
   const { name, image } = user;
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   const handleOpen = () => {
     setOpen(true);
@@ -45,7 +46,7 @@ function Navbar() {
 
   const navList = (
     <div>
-      <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+      <ul className="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
         {buttons.map((button, index) => {
           return (
             <Link to={"/filteredProducts/" + button} key={index}>
@@ -61,30 +62,44 @@ function Navbar() {
             </Link>
           );
         })}
-        <Link to="/salesection">
-          <Typography
-            as="li"
-            variant="small"
-            color="red"
-            className="p-1 font-medium"
-          >
-            SALE
-          </Typography>
-        </Link>
+        {location.pathname === "/" ? (
+          <Link to="/salesection">
+            <Typography
+              as="li"
+              variant="small"
+              color="red"
+              className="p-1 font-medium"
+            >
+              SALE
+            </Typography>
+          </Link>
+        ) : (
+          <Link to="/">
+            {" "}
+            <Typography
+              as="li"
+              variant="small"
+              color="red"
+              className="p-1 font-medium"
+            >
+              Back
+            </Typography>
+          </Link>
+        )}
       </ul>
     </div>
   );
 
   return (
     <div>
-      <div className="bg-black p-2 w-full">
-        <h3 className="text-white font-inter md:text-2xl text-xl tracking-normal leading-none font-bold text-center ">
+      <div className="w-full p-2 bg-black">
+        <h3 className="text-xl font-bold leading-none tracking-normal text-center text-white font-inter md:text-2xl ">
           Welcome All
         </h3>
       </div>
-      <div className="flex justify-around items-center w-full">
+      <div className="flex items-center justify-around w-full">
         <div>
-          <img src={logo} alt="store" className="h-28 w-full" />
+          <img src={logo} alt="store" className="w-full h-28" />
         </div>
         <div className="flex flex-row items-center">
           <div
@@ -92,7 +107,7 @@ function Navbar() {
             onClick={handleOpen}
           >
             {totalAmount > 0 ? (
-              <span className="rounded-full bg-gray-300 px-2 font-inter text-sm mr-1">
+              <span className="px-2 mr-1 text-sm bg-gray-300 rounded-full font-inter">
                 {totalAmount}
               </span>
             ) : (
@@ -112,18 +127,18 @@ function Navbar() {
               </svg>
             )}
 
-            <p className="font-inter md:text-base tracking-normal leading-none md:font-medium text-sm  text-center">
+            <p className="text-sm leading-none tracking-normal text-center font-inter md:text-base md:font-medium">
               Shopping bag
             </p>
             <div>{open && <Cart openModel={open} setOpen={setOpen} />}</div>
           </div>
-          <div className="flex flex-row items-center cursor-pointer pl-4">
+          <div className="flex flex-row items-center pl-4 cursor-pointer">
             {image && (
               <Avatar src={image} alt="avatar" size="sm" className="mr-2" />
             )}
             <div onClick={() => dispatch(logout())}>
               <Tooltip content="Sign Out" placement="bottom">
-                <p className="font-inter text-sm font-medium tracking-normal leading-none">
+                <p className="text-sm font-medium leading-none tracking-normal font-inter">
                   Hi {name.charAt(0).toUpperCase() + name.slice(1)}
                 </p>
               </Tooltip>
@@ -134,7 +149,7 @@ function Navbar() {
 
       <IconButton
         variant="text"
-        className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden mb-4"
+        className="w-6 h-6 mb-4 ml-auto text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
         ripple={false}
         onClick={() => setOpenNav(!openNav)}
       >
@@ -142,7 +157,7 @@ function Navbar() {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
-            className="h-6 w-6"
+            className="w-6 h-6"
             viewBox="0 0 24 24"
             stroke="currentColor"
             strokeWidth={2}
@@ -170,22 +185,22 @@ function Navbar() {
           </svg>
         )}
       </IconButton>
-      <div className="hidden lg:flex mx-auto justify-around items-center w-full">
+      <div className="items-center justify-around hidden w-full mx-auto lg:flex">
         {navList}
       </div>
 
-      <MobileNav open={openNav}>
+      <Collapse open={openNav}>
         <div className="container mx-auto">{navList}</div>
-      </MobileNav>
-      <div className="bg-black p-4 w-full ">
+      </Collapse>
+      <div className="w-full p-4 bg-black ">
         <Marquee direction="left" speed={100}>
-          <div className="text-white font-inter md:text-base text-sm tracking-normal leading-none font-medium font-sm text-center mx-60">
+          <div className="text-sm font-medium leading-none tracking-normal text-center text-white font-inter md:text-base font-sm mx-60">
             50% OFF
           </div>
-          <div className="text-white font-inter md:text-base text-sm tracking-normal leading-none font-medium font-sm text-center mx-60">
+          <div className="text-sm font-medium leading-none tracking-normal text-center text-white font-inter md:text-base font-sm mx-60">
             Free shipping & returns
           </div>
-          <div className="text-white font-inter md:text-base text-sm tracking-normal leading-none font-medium font-sm text-center mx-60">
+          <div className="text-sm font-medium leading-none tracking-normal text-center text-white font-inter md:text-base font-sm mx-60">
             Different payment methods
           </div>
         </Marquee>
