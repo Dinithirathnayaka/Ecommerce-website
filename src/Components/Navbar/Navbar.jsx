@@ -45,7 +45,7 @@ function Navbar() {
   }, []);
 
   const navList = (
-    <div>
+    <div className>
       <ul className="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
         {buttons.map((button, index) => {
           return (
@@ -189,8 +189,8 @@ function Navbar() {
         {navList}
       </div>
 
-      <Collapse open={openNav}>
-        <div className="container mx-auto">{navList}</div>
+      <Collapse open={openNav} className="pl-8">
+        <div className="container ml-2 md:mx-auto">{navList}</div>
       </Collapse>
       <div className="w-full p-4 bg-black ">
         <Marquee direction="left" speed={100}>

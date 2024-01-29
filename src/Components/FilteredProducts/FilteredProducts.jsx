@@ -52,7 +52,7 @@ function FilteredProducts() {
       <Navbar />
       <div className="pt-16">
         <div className="pl-14">
-          <h1 className="md:text-3xl text-2xl font-inter text-gray-600 font-bold tracking-normal leading-none">
+          <h1 className="text-2xl font-bold leading-none tracking-normal text-gray-600 md:text-3xl font-inter">
             {type}
           </h1>
 
@@ -113,7 +113,7 @@ function FilteredProducts() {
                   </MenuItem>
 
                   <Menu
-                    placement="right-start"
+                    placement="bottom"
                     open={openMenuColor}
                     handler={setOpenMenuColor}
                     allowHover
@@ -145,7 +145,7 @@ function FilteredProducts() {
                     </MenuList>
                   </Menu>
                   <Menu
-                    placement="right-start"
+                    placement="bottom"
                     open={openMenuSize}
                     handler={setOpenMenuSize}
                     allowHover
@@ -154,7 +154,7 @@ function FilteredProducts() {
                     <MenuHandler className="flex items-center justify-between">
                       <MenuItem
                         disabled={type === "Bags" || type === "Shoes"}
-                        className="text-black hover:bg-gray-300 duration-300 ease-in-out mr-4"
+                        className="mr-4 text-black duration-300 ease-in-out hover:bg-gray-300"
                       >
                         Select a Size
                         <ChevronUpIcon
@@ -179,7 +179,7 @@ function FilteredProducts() {
                     </MenuList>
                   </Menu>
                   <Menu
-                    placement="right-start"
+                    placement="bottom"
                     open={openMenuShoeSize}
                     handler={setOpenMenuShoeSize}
                     allowHover
@@ -196,7 +196,7 @@ function FilteredProducts() {
                           type === "Jeans" ||
                           type === "Jackets"
                         }
-                        className="text-black hover:bg-gray-300 duration-300 ease-in-out mr-4"
+                        className="mr-4 text-black duration-300 ease-in-out hover:bg-gray-300"
                       >
                         Select a Shoe Size
                         <ChevronUpIcon
@@ -242,7 +242,7 @@ function FilteredProducts() {
         {error ? (
           <Error />
         ) : (
-          <div className="grid grid-cols-1 justify-items-center py-8 gap-4 mx-auto md:grid-cols-2 lg:grid-cols-3  md:max-w-7xl">
+          <div className="grid grid-cols-1 gap-4 py-8 mx-auto justify-items-center md:grid-cols-2 lg:grid-cols-3 md:max-w-7xl">
             {products
               .filter((product) => product.type === type)
               .map((product, index) => {
